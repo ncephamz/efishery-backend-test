@@ -9,7 +9,7 @@
 # Set up with docker
 - Create file .env.container in /nodejs
   `touch .env.container`
-- Copy env variable needed, example
+- Copy env variable needed, example : <br>
   `PORT = <your port app>`<br>
   `SECRET_JWT=<your stein jwt secret>`<br>
   `SECRET_ENCRYPT_PASSWORD_PROFILE = <your secret encrypt password>`<br>
