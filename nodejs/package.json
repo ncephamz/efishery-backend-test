@@ -1,0 +1,42 @@
+{
+  "name": "efishery-backend-test",
+  "version": "0.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": "12.16.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "confidence": "^4.0.2",
+    "crypto": "^1.0.1",
+    "dotenv": "^6.1.0",
+    "events": "1.1.1",
+    "joi": "^14.0.1",
+    "jsftp": "2.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "passport": "0.4.0",
+    "passport-http": "0.3.0",
+    "randomstring": "^1.2.2",
+    "restify": "^8.3.3",
+    "restify-cors-middleware": "^1.1.1",
+    "restify-errors": "^8.0.0",
+    "rewire": "^5.0.0",
+    "serve-static-restify": "^3.0.0",
+    "stein-js-client": "0.0.2",
+    "util": "0.10.3",
+    "uuid": "3.1.0",
+    "validate.js": "0.12.0",
+    "winston": "^2.4.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-react": "^7.11.1",
+    "nodemon": "^2.0.15"
+  }
+}
