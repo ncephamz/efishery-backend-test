@@ -6,6 +6,7 @@ const wrapper = require('../helpers/utils/wrapper');
 
 // import handler here
 const authController = require('../module/auth/controller');
+const commodityController = require('../module/commodity/controller');
 
 function AppServer() {
   this.server = restify.createServer({
@@ -40,6 +41,8 @@ function AppServer() {
   this.server.post('/auth/v1/registration', authController.registration);
   this.server.post('/auth/v1/token', authController.generateToken);
   this.server.get('/auth/v1/private-claim', jwtAuth.verifyToken, authController.privateClaim);
+
+  this.server.get('/commodities/v1/all', jwtAuth.verifyToken, commodityController.findAllCommodities);
 
 }
 

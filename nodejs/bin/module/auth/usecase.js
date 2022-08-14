@@ -48,7 +48,7 @@ class Usecase {
       logger.error(this.ctx, err, 'generateToken()');
       return wrapper.error(new InternalServerError(err));
     }
-    if (data.length < 0) {
+    if (data.length === 0) {
       return wrapper.error(new NotFoundError());
     }
 

@@ -7,7 +7,7 @@ const responseMessages = {
   AUTH: {
     GENERATE_TOKEN: {
       200: 'generate token has been succesfully',
-      401: 'invalid username or password',
+      401: 'invalid phone or password',
     },
     REGISTRATION: {
       201: 'registration has been succesfully'
@@ -19,6 +19,11 @@ const responseMessages = {
       200: 'private claim has been succesfully'
     }
   },
+  COMMODITIES: {
+    ALL: {
+      200: 'find commoditites has been succesfully'
+    }
+  }
 };
 
 const general = {
@@ -28,7 +33,7 @@ const general = {
 
 const baseUrlSourceData = {
   COMMODITIES: 'https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/list',
-  DETAIL: 'http://dev3.dansmultipro.co.id/api/recruitment/positions/'
+  CURRENCY: 'https://free.currconv.com/api/v7/convert'
 };
 
 const sheetNames = {

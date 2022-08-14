@@ -5,7 +5,7 @@ class Repository {
     this.axios = new Axios();
   }
 
-  async findAll(url) {
+  async fetchUrl(url) {
     const { err, data } = await this.axios.get(url);
     if (err) {
       return wrapper.error(err);

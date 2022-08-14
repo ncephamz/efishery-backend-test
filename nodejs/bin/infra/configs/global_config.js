@@ -10,6 +10,7 @@ const config = {
   steinHqUrl: process.env.STEIN_HQ_URL,
   steinHqUsername: process.env.STEIN_HQ_USERNAME,
   steinHqPassword: process.env.STEIN_HQ_PASSWORD,
+  currencyApiKey: process.env.CURRENCY_API_KEY,
 };
 
 const store = new confidence.Store(config);
