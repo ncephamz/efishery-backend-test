@@ -57,7 +57,6 @@ class Usecase {
       return wrapper.error(new UnauthorizedError(responseMessages.AUTH.GENERATE_TOKEN[401]));
     }
 
-    console.log(data)
     return wrapper.data({
       token: await jwtAuth.generateToken({ name: data[0].name, phone, role: data[0].role, createdAt: data[0].created_at }),
     });

@@ -22,7 +22,13 @@ const responseMessages = {
   COMMODITIES: {
     ALL: {
       200: 'find commoditites has been succesfully'
-    }
+    },
+    AGGREGATE: {
+      200: 'aggregate commoditites has been succesfully'
+    },
+  },
+  ROLE: {
+    403: 'do not have access to this resource'
   }
 };
 
@@ -40,9 +46,14 @@ const sheetNames = {
   USERS: 'users'
 };
 
+const roles = {
+  ADMIN: 'admin'
+};
+
 module.exports = {
   responseMessages,
   general,
   baseUrlSourceData,
-  sheetNames
+  sheetNames,
+  roles
 };

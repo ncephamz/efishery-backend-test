@@ -43,6 +43,7 @@ function AppServer() {
   this.server.get('/auth/v1/private-claim', jwtAuth.verifyToken, authController.privateClaim);
 
   this.server.get('/commodities/v1/all', jwtAuth.verifyToken, commodityController.findAllCommodities);
+  this.server.get('/commodities/v1/aggregate', jwtAuth.verifyToken, jwtAuth.validateRole, commodityController.aggregateCommodities);
 
 }
 

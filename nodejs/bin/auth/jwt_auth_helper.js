@@ -3,7 +3,7 @@ const config = require('../infra/configs/global_config');
 const wrapper = require('../helpers/utils/wrapper');
 const { ERROR } = require('../helpers/http-status/status_code');
 const { UnauthorizedError, ForbiddenError } = require('../helpers/error');
-const { responseMessages, general: { FAIL } } = require('../helpers/utils/constant');
+const { responseMessages, general: { FAIL }, roles } = require('../helpers/utils/constant');
 const secretKey = config.get('/secretKey');
 
 const generateToken = async (payload, expiresIn = '24h') => {
@@ -54,7 +54,22 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
+const validateRole = (req, res, next) => {
+  const result = {
+    err: null,
+    data: null
+  };
+
+  if (req.privateClaim.role !== roles.ADMIN) {
+    result.err = new ForbiddenError(responseMessages.ROLE[403]);
+    return wrapper.response(res, FAIL, result, responseMessages.ROLE[403], ERROR.FORBIDDEN);
+  }
+
+  next();
+};
+
 module.exports = {
   generateToken,
   verifyToken,
+  validateRole
 };
