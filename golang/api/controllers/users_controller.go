@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -56,7 +57,7 @@ func (server *Server) CreateUser(w http.ResponseWriter, r *http.Request) {
 	responses.JSON(w, http.StatusCreated, resp)
 }
 
-func (server *Server) Login(w http.ResponseWriter, r *http.Request) {
+func (server *Server) GenerateToken(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		responses.ERROR(w, http.StatusUnprocessableEntity, err)
@@ -70,7 +71,7 @@ func (server *Server) Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	user.Prepare()
-	err = user.Validate("login")
+	err = user.Validate("token")
 	if err != nil {
 		responses.ERROR(w, http.StatusUnprocessableEntity, err)
 		return
@@ -83,7 +84,9 @@ func (server *Server) Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = models.VerifyPassword(userExist[0].Password, user.Password)
+	fmt.Println(userExist[0].Password)
+
+	err = models.VerifyPassword(user.Password, userExist[0].Password)
 	if err != nil && err == bcrypt.ErrMismatchedHashAndPassword {
 		formattedError := formaterror.FormatError(err.Error())
 		responses.ERROR(w, http.StatusUnprocessableEntity, formattedError)
@@ -100,5 +103,16 @@ func (server *Server) Login(w http.ResponseWriter, r *http.Request) {
 	resp := models.Token{
 		token,
 	}
+
 	responses.JSON(w, http.StatusOK, resp)
+}
+
+func (server *Server) ClaimToken(w http.ResponseWriter, r *http.Request) {
+	claim, err := auth.ExtractTokenClaims(r)
+	if err != nil {
+		responses.ERROR(w, http.StatusUnauthorized, errors.New("Unauthorized"))
+		return
+	}
+	
+	responses.JSON(w, http.StatusOK, claim)
 }

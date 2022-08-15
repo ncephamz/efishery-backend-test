@@ -1,9 +1,11 @@
 # efishery-backend-test
 
-# Run Backend Node JS
-- go into the node js folder `cd nodejs`
-- follow the next instructions in the folder
+# Up service
+- execute container-up.sh in terminal `sh container-up.sh`
 
-# Run Backend Golang
-- go into the golang folder `cd golang`
-- follow the next instructions in the folder
+# Down service
+- execute container-down.sh in terminal `sh container-down.sh`
+
+# Notes
+- Untuk menjalankan aplikasi manual anda bisa masuk ke dalam folder `nodejs` atau `golang`
+- Ikuti petunjuk selanjutnya yang terdapat di masing2 aplikasi

@@ -11,5 +11,9 @@ func FormatError(err string) error {
 		return errors.New("Phone already registered")
 	}
 
-	return errors.New("Incorrect Details")
+	if strings.Contains(err, "password") {
+		return errors.New("Invalid phone or password")
+	}
+
+	return errors.New(err)
 }

@@ -66,7 +66,7 @@ func (u *User) Prepare() {
 
 func (u *User) Validate(action string) error {
 	switch strings.ToLower(action) {
-	case "login":
+	case "token":
 		if u.Phone == "" {
 			return errors.New("Required Phone")
 		}
