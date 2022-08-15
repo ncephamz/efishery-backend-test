@@ -4,7 +4,7 @@ services:
   api:
     container_name: node_efishery_backend_test
     build: .
-    env_file: .env.container
+    env_file: .env
     ports:
       - 8000:8000
     command: "npm run start"
