@@ -84,8 +84,6 @@ func (server *Server) GenerateToken(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(userExist[0].Password)
-
 	err = models.VerifyPassword(user.Password, userExist[0].Password)
 	if err != nil && err == bcrypt.ErrMismatchedHashAndPassword {
 		formattedError := formaterror.FormatError(err.Error())
@@ -113,6 +111,6 @@ func (server *Server) ClaimToken(w http.ResponseWriter, r *http.Request) {
 		responses.ERROR(w, http.StatusUnauthorized, errors.New("Unauthorized"))
 		return
 	}
-	
+
 	responses.JSON(w, http.StatusOK, claim)
 }
