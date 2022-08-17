@@ -1,2 +1,2 @@
-docker-compose -f nodejs/docker-compose.yml down
-docker-compose -f golang/docker-compose.yml down
+docker-compose -f fetch/docker-compose.yml down
+docker-compose -f auth/docker-compose.yml down
